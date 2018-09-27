@@ -2,8 +2,8 @@ package com.jgtdl.basic.api.auth;
 
 import com.jgtdl.basic.core.api.BaseController;
 import com.jgtdl.basic.model.auth.Organization;
-import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.jgtdl.basic.service.auth.OrganizationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,10 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/auth/orgs")
-public class OrganizationController implements BaseController {
+public class OrganizationController
+    implements BaseController<Organization,OrganizationService,Long> {
 
-  @GetMapping
-  public List<Organization> findDataList(){
-    return null;
+  @Autowired
+  private OrganizationService organizationService;
+
+  /**
+   * 获取业务对象实例
+   *
+   * @return 对应的Service层实例
+   */
+  @Override
+  public OrganizationService getService() {
+    return organizationService;
   }
 }

@@ -4,13 +4,13 @@ spring:
     username: root
     password: 123456
     driver-class-name: org.mariadb.jdbc.Driver
-    schema: classpath:/sql/schema.sql   #init project ddl sql
-    schema-username: root
-    schema-password: 123456
-    data: classpat:/sql/data.sql        #init project data sql
-    data-username: root
-    data-password: 123456
-    sql-script-encoding: utf-8
+#    schema: classpath:/sql/schema.sql   #init project ddl sql
+#    schema-username: root
+#    schema-password: 123456
+#    data: classpat:/sql/data.sql        #init project data sql
+#    data-username: root
+#    data-password: 123456
+#    sql-script-encoding: utf-8
   jpa:
     open-in-view: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -19,10 +19,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        ddl-auto: none       #不使用JPA自动生成数据库
         max_fetch_depth: 1   #设置外连接抓取树的最大深度
+    hibernate:
+      ddl-auto: update
 server:
   port: 8091
-
-
 
